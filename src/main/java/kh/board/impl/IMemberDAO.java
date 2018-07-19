@@ -7,14 +7,16 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+
 import org.springframework.stereotype.Component;
 
 import kh.board.dto.MemberDTO;
+
 import kh.board.interfaces.MemberDAO;
+
 
 @Component
 public class IMemberDAO implements MemberDAO {
-	
 	@Autowired
 	private JdbcTemplate template;
 	
@@ -35,9 +37,23 @@ public class IMemberDAO implements MemberDAO {
 				tmp.setSeq(rs.getInt(1));
 				tmp.setId(rs.getString(2));
 				tmp.setPw(rs.getString(3));
+				
+				
 				tmp.setName(rs.getString(4));
 				return tmp;
 			}
 		});
 	}
+
+	
+	@Override
+	public boolean pwcheck(String id, String pw) throws Exception {
+		String sql = "select * from members where id= ? and pw = ? ";
+	
+		
+		
+		return true;
+	}
+
+
 }

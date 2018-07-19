@@ -1,8 +1,11 @@
 package kh.board.controller;
 
+
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +21,28 @@ public class MemberController {
 	@Autowired
 	private MemberService service;
 	
+	
+	@RequestMapping("/memberout.mem")
+	public String toPwCheck() {
+		return "redirect:pwcheck.jsp";
+	}
+	
+//	@RequestMapping("/pwcheck.mem")
+//	public ModelAndView pwcheck(HttpServletRequest request, String pw) {
+//		ModelAndView mav = new ModelAndView();
+//		int outresult = service.pwcheck(request.getSession().getAttribute("loginId"),pw);
+//		
+//		mav.addObject("outresult", outresult)
+//		mav.setViewName("login.jsp");
+//		return mav;
+//	}
+	
+	@RequestMapping("/main.mem")
+	public String toMain() {
+		return "redirect:login.jsp";
+	}
+
+
 	@RequestMapping("/join.mem")
 	public String signUp() {		
 		return "sign.jsp";

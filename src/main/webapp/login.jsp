@@ -44,9 +44,9 @@
 
 					location.href = "modify.mem";
 				}
-// 				document.getElementById("toBoard").onclick = function() {
-// 					location.href = "board.";
-// 				}
+				document.getElementById("toBoard").onclick = function() {
+					location.href = "board.bo";
+				}
 			</script>
 
 		</c:when>

@@ -34,4 +34,10 @@ public class IBoardDAO implements BoardDAO{
 			}
 		});
 	}
+	
+	@Override
+	public int insertBoard(BoardDTO dto) {
+		String sql = "insert into board values(board_seq.nextval,?,?,?,sysdate)";
+		return template.update(sql, dto.getWriter(), dto.getTitle(), dto.getContents());
+	}
 }

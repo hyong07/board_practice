@@ -88,7 +88,7 @@
    </div>
    <script>
       document.getElementById("writebtn").onclick = function() {
-         location.href = "Write.jsp";
+         location.href = "write.bo";
       }
       document.getElementById("backbtn").onclick = function() {
          location.href = "login.jsp";

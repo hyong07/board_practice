@@ -23,4 +23,18 @@ public class BoardController {
 		mav.setViewName("board.jsp");
 		return mav;
 	}
+	
+	@RequestMapping("/write.bo")
+	public String boardWrite() {
+		return "write.jsp";
+	}
+	
+	
+	@RequestMapping("/boardWrite.bo")
+	public ModelAndView writeProc(BoardDTO dto) {
+		ModelAndView mav = new ModelAndView();
+		int result = service.insertBoard(dto);	
+		mav.setViewName("board.bo");
+		return mav;
+	}
 }

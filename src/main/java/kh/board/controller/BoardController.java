@@ -37,4 +37,13 @@ public class BoardController {
 		mav.setViewName("board.bo");
 		return mav;
 	}
+	
+	@RequestMapping("/boardInfo.bo")
+	public ModelAndView boardInfo(int seq) {		
+		ModelAndView mav = new ModelAndView();
+		List<BoardDTO> result = service.getBoardInfo(seq);
+		mav.addObject("result", result.get(0));
+		mav.setViewName("articleView.jsp");
+		return mav;
+	}
 }

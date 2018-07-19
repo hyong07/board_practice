@@ -54,7 +54,7 @@
          <c:forEach var="tmp" items="${result}">
          <tr>
             <td>${tmp.seq}</td>            
-            <td>${tmp.title}</td>
+            <td><a href="boardInfo.bo?seq=${tmp.seq}">${tmp.title}</a></td>
             <td>${tmp.writer}</td>
             <td>${tmp.write_date}</td>            
          </tr>

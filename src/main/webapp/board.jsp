@@ -44,8 +44,7 @@
             <th>글번호</th>
             <th id="title">제목</th>
             <th>작성자</th>
-            <th>작성일</th>
-            <th>조회수</th>
+            <th>작성일</th>            
          </tr>
 
 
@@ -54,13 +53,10 @@
          <c:when test="${result.size() != 0}">
          <c:forEach var="tmp" items="${result}">
          <tr>
-            <td>${tmp.seq}</td>
-            <td class="atitle"><a
-               href="BoardView.bo?seq=${tmp.seq}&count=${tmp.viewcount}"
-               style="text-decoration: none; color: black;">${tmp.title}</a></td>
+            <td>${tmp.seq}</td>            
+            <td><a href="boardInfo.bo?seq=${tmp.seq}">${tmp.title}</a></td>
             <td>${tmp.writer}</td>
-            <td>${tmp.writedate}</td>
-            <td>${tmp.viewcount}</td>
+            <td>${tmp.write_date}</td>            
          </tr>
          </c:forEach>
          
@@ -88,7 +84,7 @@
    </div>
    <script>
       document.getElementById("writebtn").onclick = function() {
-         location.href = "Write.jsp";
+         location.href = "write.bo";
       }
       document.getElementById("backbtn").onclick = function() {
          location.href = "login.jsp";

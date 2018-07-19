@@ -12,4 +12,9 @@ public interface MemberService {
 
 	public int insertMem(MemberDTO dto);
 	public List<MemberDTO> loginMem(MemberDTO dto);
+
+	public List<MemberDTO> getAllData(MemberDTO dto , String id) throws Exception;
+
+	
+
 }

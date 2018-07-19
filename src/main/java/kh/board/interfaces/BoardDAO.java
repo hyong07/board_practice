@@ -6,4 +6,6 @@ import kh.board.dto.BoardDTO;
 
 public interface BoardDAO {
 	public List<BoardDTO> getBoard(BoardDTO dto);
+	public int insertBoard(BoardDTO dto);
+	public List<BoardDTO> getBoardInfo(int seq);
 }

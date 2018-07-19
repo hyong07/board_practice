@@ -45,6 +45,7 @@ public class IMemberDAO implements MemberDAO {
 		});
 	}
 
+<<<<<<< HEAD
 	
 	@Override
 	public boolean pwcheck(String id, String pw) throws Exception {
@@ -53,6 +54,25 @@ public class IMemberDAO implements MemberDAO {
 		
 		
 		return true;
+=======
+
+	
+	@Override
+	public List<MemberDTO> getAllData(MemberDTO dto, String id) throws Exception {
+		String sql = "select * from members where id = ?";
+		
+		return template.query(sql, new Object[] {id}, new RowMapper<MemberDTO>() {
+			@Override
+			public MemberDTO mapRow(ResultSet rs, int rowNum) throws SQLException {
+				MemberDTO tmp = new MemberDTO();
+				tmp.setSeq(rs.getInt(1));
+				tmp.setId(rs.getString(2));
+				tmp.setPw(rs.getString(3));
+				tmp.setName(rs.getString(4));
+				return tmp;
+			}
+		});	
+>>>>>>> master
 	}
 
 

@@ -36,4 +36,16 @@ public class IMemberService implements MemberService{
 		return dao.pwcheck(id, pw);
 
 	}
+
+
+	
+	@Override
+	public List<MemberDTO> getAllData(MemberDTO dto, String id) throws Exception {
+		
+		return dao.getAllData(dto,id);
+	}
+
+
+
+
 }

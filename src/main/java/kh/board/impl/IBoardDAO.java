@@ -34,4 +34,26 @@ public class IBoardDAO implements BoardDAO{
 			}
 		});
 	}
+	
+	@Override
+	public int insertBoard(BoardDTO dto) {
+		String sql = "insert into board values(board_seq.nextval,?,?,?,sysdate)";
+		return template.update(sql, dto.getWriter(), dto.getTitle(), dto.getContents());
+	}
+	
+	@Override
+	public List<BoardDTO> getBoardInfo(int seq) {		
+		String sql = "select * from board where seq = ?";
+		return template.query(sql, new Object[] {seq}, new RowMapper<BoardDTO>() {
+			public BoardDTO mapRow(ResultSet rs, int rowNum) throws SQLException {
+				BoardDTO tmp = new BoardDTO();
+				tmp.setSeq(rs.getInt(1));
+				tmp.setWriter(rs.getString(2));
+				tmp.setTitle(rs.getString(3));
+				tmp.setContents(rs.getString(4));
+				tmp.setWrite_date(rs.getString(5));				
+				return tmp;
+			}
+		});
+	}
 }

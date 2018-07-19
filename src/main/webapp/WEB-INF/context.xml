@@ -24,5 +24,12 @@
 	
 	<tx:annotation-driven/>
 
+<<<<<<< HEAD
 <!-- <context:component-scan base-package="kh.board" /> -->
 </beans>
+=======
+	
+	
+<context:component-scan base-package="kh.board" />
+</beans> 
+>>>>>>> master

@@ -71,8 +71,7 @@
 						</th>
 					</tr>
 				</table>
-			</form>
-			
+			</form>			
 			<script>
 				document.getElementById("joinbt").onclick = function() {
 					location.href = "join.mem";

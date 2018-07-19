@@ -17,4 +17,4 @@
 	</bean>
 
 <context:component-scan base-package="kh.board" />
-</beans>
+</beans> 

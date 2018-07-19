@@ -43,4 +43,18 @@ public class MemberController {
 		return mav;
 	}
 	
+
+	@Autowired
+	private MemberService service;
+	
+	@RequestMapping("/mypage.mem")
+	public ModelAndView toMypage(MemberDTO dto, String id) throws Exception {
+		
+		List<MemberDTO> result = service.getAllData(id);
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("result", result);
+		mav.setViewName("mypage.jsp");
+		return mav;
+	}
 }

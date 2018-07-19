@@ -7,4 +7,7 @@ import kh.board.dto.MemberDTO;
 public interface MemberService {
 	public int insertMem(MemberDTO dto);
 	public List<MemberDTO> loginMem(MemberDTO dto);
+
+	public List<MemberDTO> getAllData(String id) throws Exception;	
+
 }

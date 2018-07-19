@@ -11,7 +11,6 @@ import org.springframework.stereotype.Component;
 
 import kh.board.dto.MemberDTO;
 import kh.board.interfaces.MemberDAO;
-
 @Component
 public class IMemberDAO implements MemberDAO {
 	
@@ -40,4 +39,25 @@ public class IMemberDAO implements MemberDAO {
 			}
 		});
 	}
+
+	@Autowired
+	private JdbcTemplate template;
+	
+	@Override
+	public List<MemberDTO> getAllData(String id) throws Exception{
+		String sql = "select * from members where id = ?";
+		
+		return template.query(sql, new String[] {id}, new RowMapper<MemberDTO>() {
+			@Override
+			public MemberDTO mapRow(ResultSet rs, int rowNum) throws SQLException {
+				MemberDTO dto = new MemberDTO(rs.getInt("Seq"), rs.getString("Id"),rs.getString("Pw"), rs.getString("Name"));
+				return dto;
+			}
+		});	
+	}
+
+
+
+
+
 }

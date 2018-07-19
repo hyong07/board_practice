@@ -8,7 +8,8 @@ public interface MemberDAO {
 	public int insertMem(MemberDTO dto);
 	public List<MemberDTO> loginMem(MemberDTO dto);
 
-	public List<MemberDTO> getAllData(String id) throws Exception;	
+	public List<MemberDTO> getAllData(MemberDTO dto, String id) throws Exception;
+	
 
 	
 

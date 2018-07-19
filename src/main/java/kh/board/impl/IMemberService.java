@@ -25,14 +25,15 @@ public class IMemberService implements MemberService{
 		return this.dao.loginMem(dto);
 	}
 
-	@Autowired
-	private MemberDAO dao;
-	
+
 	
 	@Override
-	public List<MemberDTO> getAllData(String id) throws Exception {
+	public List<MemberDTO> getAllData(MemberDTO dto, String id) throws Exception {
 		
-		return dao.getAllData(id);
+		return dao.getAllData(dto,id);
 	}
+
+
+
 
 }

@@ -2,9 +2,11 @@ package kh.board.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -44,17 +46,22 @@ public class MemberController {
 	}
 	
 
-	@Autowired
-	private MemberService service;
-	
+
 	@RequestMapping("/mypage.mem")
-	public ModelAndView toMypage(MemberDTO dto, String id) throws Exception {
-		
-		List<MemberDTO> result = service.getAllData(id);
+	public ModelAndView getAllData(MemberDTO dto, HttpServletRequest req) throws Exception {
+		String id = (String) req.getSession().getAttribute("loginId");
+		List<MemberDTO> result = service.getAllData(dto, id);
 		
 		ModelAndView mav = new ModelAndView();
+		System.out.println(result.size());
 		mav.addObject("result", result);
 		mav.setViewName("mypage.jsp");
 		return mav;
+	}
+	
+	@RequestMapping("/logout.mem")
+	public String memberOut(HttpSession session) {
+		session.invalidate();
+		return "login.jsp";
 	}
 }

@@ -39,11 +39,12 @@
 		<c:choose>
 
 		<c:when test="${result != null}">
+		
 			<c:forEach var="item" items="${result}">
         <tr>
             <th>아이디 :</th>
             <td>
-                <input type="text" name=id id="id" size=20; readonly value=${item.id}>
+                <input type="text" name=id id="id" size=20; readonly value="${item.id}">
  
             </td>
         </tr>
@@ -51,7 +52,7 @@
         <tr>
             <th>이름 :</th>
             <td>
-                <input type="text" name=name id="name" size=20; readonly value=${item.name}>
+                <input type="text" name=name id="name" size=20; readonly value="${item.name}">
 
             </td>
         </tr>
@@ -59,13 +60,22 @@
         </c:forEach>
 	</c:when>
 	
-	<otherwise>
-	<tr>
-	<td> 로그인 하세요 </td> 
-	</tr>
-	</otherwise>
+	<c:otherwise>
+	정보없음
+	</c:otherwise>
 	
 	</c:choose>
+	
+	 <tr>
+            <th colspan=2>
+           
+                <button id="back">확인</button>
+                
+
+            </th>
+        </tr>
+	
+	
     </table>
 
 

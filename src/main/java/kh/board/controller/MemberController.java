@@ -47,7 +47,7 @@ public class MemberController {
 
 	@RequestMapping("/join.mem")
 	public String signUp() {		
-		return "sign.jsp";
+		return "redirect:sign.jsp";
 	}
 	
 	@RequestMapping("/member.mem")
@@ -87,6 +87,6 @@ public class MemberController {
 	@RequestMapping("/logout.mem")
 	public String memberOut(HttpSession session) {
 		session.invalidate();
-		return "login.jsp";
+		return "redirect:login.jsp";
 	}
 }

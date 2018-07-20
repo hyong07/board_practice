@@ -19,6 +19,7 @@ public class BoardAspect {
 	@Before("insertPointCut()")
 	public void insertLogging(JoinPoint jp) {		
 		MemberDTO dto = (MemberDTO)jp.getArgs()[0];
-		String password = EncryptUtils.getSha512(dto.getPw());		
+		String password = EncryptUtils.getSha512(dto.getPw());
+		System.out.println(password);
 	}
 }

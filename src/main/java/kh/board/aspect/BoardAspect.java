@@ -13,13 +13,25 @@ import kh.board.security.EncryptUtils;
 @Component
 public class BoardAspect {
 	
-	@Pointcut("execution(* kh.board.impl.*MemberService.insert(..))")
+	@Pointcut("execution(* kh.board.impl.IMemberService.insertMem(..))")
 	public void insertPointCut() {}
 	
 	@Before("insertPointCut()")
 	public void insertLogging(JoinPoint jp) {		
 		MemberDTO dto = (MemberDTO)jp.getArgs()[0];
 		String password = EncryptUtils.getSha512(dto.getPw());
-		System.out.println(password);
+		dto.setPw(password);
 	}
+	
+	@Pointcut("execution(* kh.board.impl.IMemberService.loginMem(..))")
+	public void loginPointCut() {}
+	
+	@Before("loginPointCut()")
+	public void loginLogging(JoinPoint jp) {
+		MemberDTO dto = (MemberDTO)jp.getArgs()[0];
+		String password = EncryptUtils.getSha512(dto.getPw());
+		dto.setPw(password);
+	}
+	
+	
 }

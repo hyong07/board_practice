@@ -42,6 +42,7 @@ public class IBoardDAO implements BoardDAO{
 	}
 	
 	@Override
+	
 	public List<BoardDTO> getBoardInfo(int seq) {		
 		String sql = "select * from board1 where seq = ?";
 		return template.query(sql, new Object[] {seq}, new RowMapper<BoardDTO>() {

@@ -10,6 +10,10 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+
+
+
 	<c:choose>
 		<c:when test="${loginId != null}">
 			<table border=1>

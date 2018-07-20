@@ -19,14 +19,14 @@ import kh.board.interfaces.MemberDAO;
 public class IMemberDAO implements MemberDAO {
 	@Autowired
 	private JdbcTemplate template;
-	
+
 	@Override
 	public int insertMem(MemberDTO dto) {
 		String sql = "insert into members values(members_seq.nextval,?,?,?)";
 		System.out.println(dto);
 		return template.update(sql, dto.getId(), dto.getPw(), dto.getName());		
 	}
-	
+
 	@Override
 	public List<MemberDTO> loginMem(MemberDTO dto) {		
 		String sql = "select * from members where id=? and pw=?";
@@ -37,30 +37,41 @@ public class IMemberDAO implements MemberDAO {
 				tmp.setSeq(rs.getInt(1));
 				tmp.setId(rs.getString(2));
 				tmp.setPw(rs.getString(3));
-				
-				
+
+
 				tmp.setName(rs.getString(4));
 				return tmp;
 			}
 		});
 	}
 
-<<<<<<< HEAD
-	
-	@Override
-	public boolean pwcheck(String id, String pw) throws Exception {
-		String sql = "select * from members where id= ? and pw = ? ";
-	
-		
-		
-		return true;
-=======
 
-	
+
 	@Override
-	public List<MemberDTO> getAllData(MemberDTO dto, String id) throws Exception {
+	public List<MemberDTO> pwcheck(String id, String pw) throws Exception {
+		String sql = "select * from members where id= ? and pw = ? ";
+
+		return template.query(sql, new String[] {id,pw}, new RowMapper<MemberDTO>() {
+			@Override
+			public MemberDTO mapRow(ResultSet rs, int rowNum) throws SQLException {
+
+				MemberDTO tmp = new MemberDTO();
+				tmp.setSeq(rs.getInt(1));
+				tmp.setId(rs.getString(2));
+				tmp.setPw(rs.getString(3));
+				tmp.setName(rs.getString(4));
+				return tmp;
+			}
+		});
+
+	}
+
+
+
+	@Override
+	public List<MemberDTO> getAllData(String id) throws Exception {
 		String sql = "select * from members where id = ?";
-		
+
 		return template.query(sql, new Object[] {id}, new RowMapper<MemberDTO>() {
 			@Override
 			public MemberDTO mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -72,8 +83,33 @@ public class IMemberDAO implements MemberDAO {
 				return tmp;
 			}
 		});	
->>>>>>> master
+
 	}
 
+	public int memleave(String id) throws Exception {
+		String sql = "delete from members where id=?";
+		return template.update(sql, id);		
+	}
+	
+	public List<MemberDTO> getSeq(String id) throws Exception {
+		String sql = "select seq from members where id=? ";
+		return template.query(sql, new String[] {id}, new RowMapper<MemberDTO>() {
+			@Override
+			public MemberDTO mapRow(ResultSet rs, int rowNum) throws SQLException {
 
+				MemberDTO tmp = new MemberDTO();
+				tmp.setSeq(rs.getInt(1));
+				return tmp;
+			}
+		});		
+	}
+	
+	
+
+	public int modify(MemberDTO dto) throws Exception{
+		String sql = "update members set id=?, pw=?,name=? where seq =?";
+		return template.update(sql,dto.getId(), dto.getPw(), dto.getName(),dto.getSeq());
+
+
+	}
 }

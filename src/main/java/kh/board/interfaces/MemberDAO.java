@@ -9,12 +9,10 @@ public interface MemberDAO {
 	public int insertMem(MemberDTO dto);
 	public List<MemberDTO> loginMem(MemberDTO dto);
 
-	public List<MemberDTO> getAllData(MemberDTO dto, String id) throws Exception;
+	public List<MemberDTO> getAllData(String id) throws Exception;
 	
-
-	
-
-
-	public boolean pwcheck(String id,String pw) throws Exception;
-
+	public List<MemberDTO> pwcheck(String id,String pw) throws Exception;
+	public int memleave(String id) throws Exception;
+	public int modify(MemberDTO dto) throws Exception;
+	public List<MemberDTO> getSeq(String id) throws Exception;
 }

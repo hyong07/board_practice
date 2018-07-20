@@ -32,7 +32,7 @@ public class IMemberService implements MemberService{
 		return this.dao.loginMem(dto);}
 
 	
-	public boolean pwcheck(String id,String pw) throws Exception{
+	public List<MemberDTO> pwcheck(String id,String pw) throws Exception{
 		return dao.pwcheck(id, pw);
 
 	}
@@ -40,11 +40,23 @@ public class IMemberService implements MemberService{
 
 	
 	@Override
-	public List<MemberDTO> getAllData(MemberDTO dto, String id) throws Exception {
+	public List<MemberDTO> getAllData(String id) throws Exception {
 		
-		return dao.getAllData(dto,id);
+		return dao.getAllData(id);
 	}
 
+	@Override
+	public int memleave(String id) throws Exception{
+		return dao.memleave(id);
+	}
+	@Override
+	public int modify(MemberDTO dto) throws Exception{
+		return dao.modify(dto);
+	}
+	
+	public List<MemberDTO> getSeq(String id) throws Exception{
+		return dao.getSeq(id);
+	}
 
 
 

@@ -95,7 +95,7 @@ public class MemberController {
 	@RequestMapping("/logout.mem")
 	public String memberOut(HttpSession session) {
 		session.invalidate();
-		return "login.jsp";
+		return "redirect:login.jsp";
 	}
 	
 	@RequestMapping("/modify.mem")

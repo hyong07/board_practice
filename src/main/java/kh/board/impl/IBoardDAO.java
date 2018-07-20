@@ -21,7 +21,7 @@ public class IBoardDAO implements BoardDAO{
 	
 	@Override
 	public List<BoardDTO> getBoard(BoardDTO dto) {		 
-		String sql = "select * from board";
+		String sql = "select * from board1";
 		return template.query(sql, new RowMapper<BoardDTO>() {
 			public BoardDTO mapRow(ResultSet rs, int rowNum) throws SQLException {
 				BoardDTO tmp = new BoardDTO();
@@ -37,13 +37,13 @@ public class IBoardDAO implements BoardDAO{
 	
 	@Override
 	public int insertBoard(BoardDTO dto) {
-		String sql = "insert into board values(board_seq.nextval,?,?,?,sysdate)";
+		String sql = "insert into board1 values(board_seq.nextval,?,?,?,sysdate)";
 		return template.update(sql, dto.getWriter(), dto.getTitle(), dto.getContents());
 	}
 	
 	@Override
 	public List<BoardDTO> getBoardInfo(int seq) {		
-		String sql = "select * from board where seq = ?";
+		String sql = "select * from board1 where seq = ?";
 		return template.query(sql, new Object[] {seq}, new RowMapper<BoardDTO>() {
 			public BoardDTO mapRow(ResultSet rs, int rowNum) throws SQLException {
 				BoardDTO tmp = new BoardDTO();

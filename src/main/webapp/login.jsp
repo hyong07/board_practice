@@ -44,9 +44,9 @@
 
 					location.href = "modify.mem";
 				}
-// 				document.getElementById("toBoard").onclick = function() {
-// 					location.href = "board.";
-// 				}
+				document.getElementById("toBoard").onclick = function() {
+					location.href = "board.bo";
+				}
 			</script>
 
 		</c:when>
@@ -71,8 +71,7 @@
 						</th>
 					</tr>
 				</table>
-			</form>
-			
+			</form>			
 			<script>
 				document.getElementById("joinbt").onclick = function() {
 					location.href = "join.mem";
